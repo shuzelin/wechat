@@ -28,6 +28,10 @@ module Wechat
           new(filter: { is_to_all: true }, send_ignore_reprint: send_ignore_reprint)
         end
       end
+
+      def to_chat(chatid)
+        new(ChatId: chatid)
+      end
     end
 
     class ArticleBuilder
