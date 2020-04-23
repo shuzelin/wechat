@@ -173,5 +173,25 @@ module Wechat
     def custom_message_send(message)
       post 'message/send', message.is_a?(Wechat::Message) ? message.agent_id(agentid).to_json : JSON.generate(message.merge(agent_id: agentid)), content_type: :json
     end
+
+    def chat_create(chat)
+      post 'appchat/create', JSON.generate(chat)
+    end
+
+    def chat_update(chatid, name, owner)
+      post 'appchat/update', JSON.generate(chatid: chatid, name: name, owner: owner)
+    end
+
+    def chat(chatid)
+      get 'appchat/get', params: { chatid: chatid }
+    end
+
+    def chat_send(chatid, message)
+      post 'appchat/send', Message.to_chat(chatid).text(message).to_json, content_type: :json
+    end
+
+    def custom_chat_send(message)
+      post 'appchat/send', message.to_json, content_type: :json
+    end
   end
 end
