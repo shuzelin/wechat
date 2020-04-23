@@ -111,6 +111,10 @@ module Wechat
       update(AgentId: agentid)
     end
 
+    def chat_id(chatid)
+      update(ChatId: chatid)
+    end
+
     def text(content)
       update(MsgType: 'text', Content: content)
     end
@@ -229,7 +233,7 @@ module Wechat
     }.freeze
 
     TO_JSON_ALLOWED = %w[touser toparty msgtype content image voice video file textcard markdown
-                         music news articles template agentid filter
+                         music news articles template agentid chatid filter
                          send_ignore_reprint mpnews towxname].freeze
 
     def to_json(*_args)
