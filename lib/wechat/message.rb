@@ -30,7 +30,7 @@ module Wechat
       end
 
       def to_chat(chatid)
-        new(ChatId: chatid)
+        new(chatid: chatid)
       end
     end
 
